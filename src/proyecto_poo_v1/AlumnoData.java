@@ -147,13 +147,77 @@ public class AlumnoData {
         }
         return 0;
     }
+    
+    
+    // ------------------------ DATOS ACADEMICOS -----------------------------------------
+    public int[][] generadorCalifMaterias(int semestre, String materias[][], int creditosMaterias[][]){
+        
+        //arreglo con calificaciones obtenidas (calculo)
+        int calificaciones[][] = new int[semestre][5];
+        for (int i = 0; i < semestre; i++) {
+            for (int j = 0; j < 5; j++) {
+                calificaciones[i][j] = ((int)(Math.random() * ((10 - 5) + 1)) + 5);
+            } 
+        }
+        
+        //Impresion 3 arreglos   (SE PEUDE HACER DESDE EL MAIN)
+        for (int i = 0; i < semestre; i++) {
+            System.out.println("");
+            for (int j = 0; j < 5; j++) {
+                System.out.println("\t"+materias[i][j]+" // creditos:"+creditosMaterias[i][j]+"// calif:"+calificaciones[i][j]);
+            } 
+        }
+        
+        return calificaciones;
+    }
+     
+     
+    public float generadorPromedio(int calif [][], int semestre){
+        float numerador = 0, contador=0;
+        for (int i = 0; i < semestre; i++) {
+            for (int j = 0; j < 5; j++) {
+                numerador = numerador + calif[i][j];
+                contador++;
+            } 
+        }
+        return numerador/contador;         //IMPORTANTE no hace decimales por alguna razon 
+    }
+    
+    
+    public float generadorEscolaridad(int calif[][], int semestre){
+        float esco;
+        float aprobadas = 0;
+        float inscritas;
+        inscritas = semestre *5;
+        for (int i = 0; i < semestre; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (calif[i][j] != 5)
+                    aprobadas++;
+            } 
+        }  
+        esco = (aprobadas / inscritas)*100;
+        return esco;                             //IMPORTANTE no hace decimales por alguna razon 
+    }
+    
+    
+    public float generadorVelocidad(int calif[][], int creditos[][], int semestre){
+        float credAlu = 0;
+        float totCred = 0;
+        for (int i = 0; i < semestre; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (calif[i][j] != 5)
+                    credAlu = credAlu + creditos[i][j];
+            } 
+        } 
+        for (int i = 0; i < semestre; i++) {
+            for (int j = 0; j < 5; j++) {
+                 totCred = totCred + creditos[i][j];
+            } 
+        } 
+        
+        return (credAlu/totCred)*100;                  //IMPORTANTE no hace decimales por alguna razon 
+    }
 }
-/**
- * RELACION EDAD - SEMESTRE
- * 18 - 1°
- * 19 - 2°, 3°
- * 20 - 4°, 5°
- * 21 - 6°, 7°
- * 22 - 8°, 9°
- * 23 - 10° 
- */
+
+
+    
