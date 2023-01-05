@@ -1,223 +1,49 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package proyecto_poo_v1;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author bolys
  */
-public class AlumnoData {
-
-    public AlumnoData() {
-    }
-    
-    public String generarNombresAleatorios() {
-		String nombresAleatorios;
-
-		String[] nombres = { "Andrea", "David", "Santiago", "Julian", "Diego", "Juan", "Melanie", "Gaelle", "Gael", "Frida"
-                , "Pablo", "Simon", "Martin", "Natalia", "Blanca", "Daniel", "Rogelio", "Isaac", "Vanessa", "Yaretzi", "Yareli", "Tania"
-                , "Patricio", "Rodrigo", "Brenda", "Alejandro", "Monica", "Gabriel", "Tania", "Daniela", "Karen", "Kaori", "Cassandra"
-                , "Miguel", "Cynthia", "Octavio", "Fernando", "Jose", "Omar", "Sebastian", "Manuel", "Axel", "Julieta", "Karla", "Sara"
-                , "Carolina", "Jessica", "Maximiliano", "Alicia", "Fernanda", "Maria", "Diana", "Aurora", "Flor", "Alberto", "Rebecca"
-                , "Leonardo", "Dara", "Sergio", "Gustavo", "Yannin", "Paola", "Luis", "Jorge", "Alonso", "Sofia", "Abril", "Yara"};
-		String[] apellidos = { "Gomez", "Arellano", "Orihuela", "Riveroll", "Villegas", "Garcia", "Isaza", "Villamil", "Campos"
-                , "Olmos", "Sotelo", "Rodriguez", "Peralta", "Lemuss", "Bolaños", "Garduño", "Pacheco", "Perez", "Orihuela", "Zarco"
-                , "Calzontli", "Sandoval", "Reyes", "Ortiz", "Rivas", "Rosas", "Bedolla", "Coronel", "Ortega", "Belmont", "Sosa", "Bazan"
-                , "Frias", "Palacios", "Patiño", "Espinoza", "Dominguez", "Hernandez", "Laguna", "Cervantes", "Contreras", "Rosas", "Goncen"
-                , "Sandoval", "Villalobos", "Rico", "Guzman", "Paz", "Del Monte", "Diaz", "Tellez", "Salas", "Ordaz", "Tavani", "Mejia"
-                , "Oviedo", "Pichardo", "Ontiveros", "Peña", "Acuña", "Marcial", "Angeles", "Cruz", "Chavez", "Maya", "Olea", "Barranco"
-                , "Flores", "Rojas", "Mendoza", "Saucedo", "Castillo", "Soriano", "Valdes", "Escudero", "Galvan", "Medina"};
-                String[] apellidos2 = { "Gomez", "Arellano", "Orihuela", "Riveroll", "Villegas", "Garcia", "Isaza", "Villamil", "Campos"
-                , "Olmos", "Sotelo", "Rodriguez", "Peralta", "Lemuss", "Bolaños", "Garduño", "Pacheco", "Perez", "Orihuela", "Zarco"
-                , "Calzontli", "Sandoval", "Reyes", "Ortiz", "Rivas", "Rosas", "Bedolla", "Coronel", "Ortega", "Belmont", "Sosa", "Bazan"
-                , "Frias", "Palacios", "Patiño", "Espinoza", "Dominguez", "Hernandez", "Laguna", "Cervantes", "Contreras", "Rosas", "Goncen"
-                , "Sandoval", "Villalobos", "Rico", "Guzman", "Paz", "Del Monte", "Diaz", "Tellez", "Salas", "Ordaz", "Tavani", "Mejia"
-                , "Oviedo", "Pichardo", "Ontiveros", "Peña", "Acuña", "Marcial", "Angeles", "Cruz", "Chavez", "Maya", "Olea", "Barranco"
-                , "Flores", "Rojas", "Mendoza", "Saucedo", "Castillo", "Soriano", "Valdes", "Escudero", "Galvan", "Medina" };
-
-			
-                nombresAleatorios = nombres[(int) (Math.floor(Math.random() * ((nombres.length - 1) - 0 + 1) + 0))] + " "
-					+ apellidos[(int) (Math.floor(Math.random() * ((apellidos.length - 1) - 0 + 1) + 0))] + " "  
-                                        + apellidos2[(int) (Math.floor(Math.random() * ((apellidos2.length - 1) - 0 + 1) + 0))];
-                
-                
-		return nombresAleatorios;
-    }
-      
-    
-    private String[] getDirecciones(){
-        int numDirecciones = 0, count = 0;
-        String direccion = "";
-        String[] direcciones = new String[1000];
+public interface AlumnoData {
+        /**
+         * VARIABLE DEL TIPO STRING[][] QUE ALMACENA EL NOMBRE DE LAS MATERIAS EXISTENTES EN LA CARRERA.
+         */
+        String MATERIAS[][] = { 
+        {"ALGEBRA","PROGRAMACION","CyGA","FISICA","QUIMICA"},
+        {"ALGEBRA II","CALCULO II","MECANICA","RETI","EDA I"},
+        {"EC. DIFERENCIALES","POO","EDA II","CALCULO II","PROBABILIDAD"},
+        {"ESTADISTICA","ELECTRICIDAD","A. NÚMERICO","MATEMATICAS A.","ESTRUCTURAS D."},
+        {"EyPC","DISPOSITIVOS E.","LENGUAJES FORMALES","SEÑALES","SOFTWARE"},
+        {"SISTEMAS OP","DDM","BASES DE DATOS","CIRCUITOS","ADMINISTRACION DE PROYECTOS"},
+        {"FINANZAS","DD VLSI","IA","COMPILADORES","SISTEMAS C."},
+        {"OPTATIVA CSyH","MICROCOMPUTADORAS","COMPUTACION GRAFICA","ETICA","REDES DE DATOS"},
+        {"ARQ COMPUTADORAS","SISTEMAS EMBEBIDOS","SISTEMAS DISTRIBUIDOS","OPTATIVA","RECURSOS MEXICO"},
+        {"OPTATIVA I","OPTATIVA II","OPTATIVA III","OPTATIVA IV","OPTATIVA V"}};
         
-        try{           
-            // Aquí usamos Tokenizer para Tokenizar los Elementos Leidos del Archivo
-            BufferedReader br = new BufferedReader(new FileReader("datosDirecciones_1.csv"));
-            String dataRead = br.readLine();
-            StringTokenizer cadParticion = new StringTokenizer(dataRead, ",");
-            
-            numDirecciones = 0;
-            while (numDirecciones < 1000){
-                //System.out.println("\n" + dataRead);
-                while (cadParticion.hasMoreElements()){
-                    if(count == 2){
-                        direccion += "NÚM. " + cadParticion.nextElement().toString() + ", ";
-                    }
-                    else if(count == 6){
-                        direccion += cadParticion.nextElement().toString() + ", ALCALDIA ";
-                    }
-                    else if(count != 5){
-                        direccion += cadParticion.nextElement().toString() + " ";
-                    }
-                    else{
-                        direccion += "C.P. " + cadParticion.nextElement().toString() + ", ";
-                    }
-    
-                    count += 1;
-                }
-                count = 0;
-                //System.out.println(direccion);
-                direcciones[numDirecciones] = direccion;
-                direccion = "";
-                numDirecciones += 1;
-                dataRead = br.readLine();
-                cadParticion = new StringTokenizer(dataRead, ",");
-            }
-            
-            br.close();
-        }catch (FileNotFoundException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        /**
+         * VARIABLE DEL TIPO INT[][] QUE ALMACENA LOS CREDITOS DE CADA MATERIA EN LA CARRERA.
+         */
+        int CREDITOS[][] = {{2,8,3,12,4},{4,2,6,4,8},{6,8,3,6,5},{2,4,6,6,4},{10,2,2,2,4},
+                                    {4,3,4,2,8},{8,6,9,2,2},{7,6,4,2,8},{8,8,4,4,6},{8,6,4,3,2}};
         
-        return direcciones;
-    }
-    
-    
-    public String generadorDireccion(){
-        String[] direcciones = getDirecciones();
-        return direcciones[(int)(Math.random() * ((1000 - 1) + 1)) + 1];
-    }
-    
-    
-    public int generadorEdad(){
-        return (int)(Math.random() * ((27 - 18) + 1)) + 18;
-    }
-    
-    
-    public int generadorNumCuenta(){
-        return (int)(Math.random() * ((400000000 - 200000000) + 1)) + 200000000;
-    }
-    
-    
-    public int generadorSemestre(int edad){
-        int[] semestres = {1,2,3,4,5,6,7,8,9,10};
-  
-        if(edad == 18){
-            return semestres[0];
-        }
-        else if(edad == 19){
-            return semestres[(int)(Math.random() * ((2 - 1) + 1)) + 1];
-        }
-        else if(edad == 20){
-            return semestres[(int)(Math.random() * ((4 - 3) + 1)) + 3];
-        }
-        else if(edad == 21){
-            return semestres[(int)(Math.random() * ((6 - 5) + 1)) + 5];
-        }
-        else if(edad == 22){
-            return semestres[(int)(Math.random() * ((8 - 7) + 1)) + 7];
-        }
-        else if(edad == 23){
-            return semestres[9];
-        }
-        else if(edad > 23 && edad < 28){
-            return semestres[(int)(Math.random() * ((9 - 7) + 1)) + 7];
-        }
-        return 0;
-    }
-    
-    
-    // ------------------------ DATOS ACADEMICOS -----------------------------------------
-    public int[][] generadorCalifMaterias(int semestre, String materias[][], int creditosMaterias[][]){
         
-        //arreglo con calificaciones obtenidas (calculo)
-        int calificaciones[][] = new int[semestre][5];
-        for (int i = 0; i < semestre; i++) {
-            for (int j = 0; j < 5; j++) {
-                calificaciones[i][j] = ((int)(Math.random() * ((10 - 5) + 1)) + 5);
-            } 
-        }
+        /**
+         * DIRECCION DE ARCHIVOS DONDE SE ALMACENARAN LOS ARCHIVOS GENERADOS POR EL PROGRAMA.
+         */
+        String URL_GEN = "C:\\Users\\bolys\\Desktop\\FI - 3er Semestre\\POO\\PROYECTO\\Proyecto_POO_v1\\DATA\\";
         
-        //Impresion 3 arreglos   (SE PEUDE HACER DESDE EL MAIN)
-        for (int i = 0; i < semestre; i++) {
-            System.out.println("");
-            for (int j = 0; j < 5; j++) {
-                System.out.println("\t"+materias[i][j]+" // creditos:"+creditosMaterias[i][j]+"// calif:"+calificaciones[i][j]);
-            } 
-        }
+        /**
+         * DIRECCION DE ARCHIVOS DONDE SE ALMACENARAN LOS ARCHIVOS DE ALUMNO GENERADOS POR EL PROGRAMA.
+         */
+        String URL_ALU = "C:\\Users\\bolys\\Desktop\\FI - 3er Semestre\\POO\\PROYECTO\\Proyecto_POO_v1\\DATA\\ALUMNO\\";
         
-        return calificaciones;
-    }
-     
-     
-    public float generadorPromedio(int calif [][], int semestre){
-        float numerador = 0, contador=0;
-        for (int i = 0; i < semestre; i++) {
-            for (int j = 0; j < 5; j++) {
-                numerador = numerador + calif[i][j];
-                contador++;
-            } 
-        }
-        return numerador/contador;         //IMPORTANTE no hace decimales por alguna razon 
-    }
-    
-    
-    public float generadorEscolaridad(int calif[][], int semestre){
-        float esco;
-        float aprobadas = 0;
-        float inscritas;
-        inscritas = semestre *5;
-        for (int i = 0; i < semestre; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (calif[i][j] != 5)
-                    aprobadas++;
-            } 
-        }  
-        esco = (aprobadas / inscritas)*100;
-        return esco;                             //IMPORTANTE no hace decimales por alguna razon 
-    }
-    
-    
-    public float generadorVelocidad(int calif[][], int creditos[][], int semestre){
-        float credAlu = 0;
-        float totCred = 0;
-        for (int i = 0; i < semestre; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (calif[i][j] != 5)
-                    credAlu = credAlu + creditos[i][j];
-            } 
-        } 
-        for (int i = 0; i < semestre; i++) {
-            for (int j = 0; j < 5; j++) {
-                 totCred = totCred + creditos[i][j];
-            } 
-        } 
+        /**
+         * DIRECCION DE ARCHIVOS DONDE SE ALMACENARAN LOS ARCHIVOS DE ADMINISTRADOR.
+         */
+        String URL_ADM = "C:\\Users\\bolys\\Desktop\\FI - 3er Semestre\\POO\\PROYECTO\\Proyecto_POO_v1\\DATA\\ADMINISTRADOR\\";
         
-        return (credAlu/totCred)*100;                  //IMPORTANTE no hace decimales por alguna razon 
-    }
 }
-
-
-    
